@@ -1,0 +1,33 @@
+
+.category{
+    background-color: #E87839;
+    padding: 20px;
+    border-radius: 50%;
+    border-style: groove;
+    height: 80px;
+    margin-bottom: 35px;
+    height: 150px;
+    font-family: 'Ultra', serif;
+    font-size: 3.5em;
+}
+.category:hover{
+    background-color: #e66115;
+}
+.sets{
+    background-color: #E87839;
+    padding: 20px;
+    border-style: groove;
+    height: 80px;
+    margin-bottom: 35px;
+    height: 150px;
+    font-family: 'Ultra', serif;
+    font-size: 3.5em;
+}
+.sets:hover{
+    background-color: #e66115;
+}
+
+.heading{
+    font-family: 'Kalam', cursive;
+
+}

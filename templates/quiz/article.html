@@ -1,0 +1,29 @@
+{% extends 'quiz/base.html' %}
+{% load static %}
+{% block body %}
+
+
+<div class="tabs" style="padding: 50px;">
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+            <div class="text-container" >
+                <h1 style="margin-bottom: 15px;">{{article.article_head}}</h1>
+                <h6 style= "margin-bottom: 10px;"><i class="fas fa-pen-nib"></i> <a href="{{article.article_author_profile}}" >{{article.article_author}}</a> &nbsp; <i class="fas fa-clock"></i> {{article.article_date}}</h6>
+
+<img src="{{article.article_img_url}}" style='height: 100%; width: 100%; margin-top: 15px; margin-bottom: 15px; object-fit: contain' /> 
+         
+            <p>{{ article.article_text|safe|linebreaks }}</p>
+            
+                
+            </div> <!-- end of text-container -->
+             <!-- end of text-container -->
+        </div>
+    </div> <!-- end of row -->
+</div>
+
+    
+
+</div>
+    {% endblock %}

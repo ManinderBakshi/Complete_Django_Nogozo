@@ -1,0 +1,32 @@
+
+{% extends 'quiz/base.html' %}
+{% load static %}
+{% block body %}
+{% if sets %}
+  
+<div class="text-center" style="padding: 30px;">
+  <h3 class="heading" data-aos="zoom-in" data-aos-delay="100">Choose the Set!</h3>
+</div>
+<div class="container" style="margin-top: 20px;">
+  <div class="row"> 
+    {% for i in sets %}
+      <div class="sets col-lg-4 col-md-6 text-center" data-aos="zoom-in" data-aos-delay="100"> 
+        <a href="{% url 'quiz:quiz' set_id=i.set_id %}" class="btn li" data-aos="zoom-in" data-aos-delay="100">
+          {{i.set_topic}} 
+          <br> 
+          <br>
+          <p style="font-family: 'Dancing Script', cursive;">
+           <span style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Published on: </span>{{i.set_date}}
+          </p>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+<div class="text-center" style="padding: 30px;">
+  <h3 class="heading">OOPS! No Set have been published yet for this Category. Please choose some other Category.</h3>
+</div>
+
+{% endif %}
+{% endblock %}

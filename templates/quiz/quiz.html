@@ -1,0 +1,112 @@
+
+{% extends 'quiz/base.html' %}
+{% load static %}
+{% block body %}
+
+
+<br>
+
+<div class="container" >
+  <div class="container" id="surveyElement" style="display:inline-block;width:100%;"></div>
+</div>
+  
+
+
+<script>
+   
+   Survey
+.StylesManager
+.applyTheme("modern");
+
+var json = {
+title: "{{set_info.set_category}} Quiz on {{set_info.set_topic}}",
+showProgressBar: "bottom",
+showTimerPanel: "top",
+maxTimeToFinishPage: 10,
+maxTimeToFinish: 30,
+firstPageIsStarted: true,
+startSurveyText: "Start Quiz",
+pages: [
+  {
+      questions: [
+          {
+              type: "html",
+              html: "You are about to start quiz by history. <br/>You have 10 seconds for every page and 30 seconds for the whole survey of 3 questions.<br/>Please click on <b>'Start Quiz'</b> button when you are ready."
+          }
+      ]
+  }, {
+      questions: [
+          {
+              type: "radiogroup",
+              name: "question1",
+              title: "{{set_info.q1}}",
+              choices: ["{{set_info.op_1a}}", "{{set_info.op_1b}}", "{{set_info.op_1c}}"],
+              correctAnswer: "{{ set_info.q1_ans }}"
+          }
+      ]
+  }, {
+      questions: [
+          {
+              type: "radiogroup",
+              name: "question2",
+              title: "{{set_info.q2}}",
+              choicesOrder: "random",
+              choices: ["{{set_info.op_2a}}", "{{set_info.op_2b}}", "{{set_info.op_2c}}"],
+              correctAnswer: "{{ set_info.q2_ans }}"
+          }
+      ]
+  }, {
+      
+      questions: [
+          {
+              type: "radiogroup",
+              name: "question3",
+              title: "{{set_info.q3}}",
+              choicesOrder: "random",
+              choices: ["{{set_info.op_3a}}", "{{set_info.op_3b}}", "{{set_info.op_3c}}"],
+              correctAnswer: "{{ set_info.q3_ans }}"
+          }
+      ]
+  }, {
+      
+      questions: [
+          {
+              type: "radiogroup",
+              name: "question4",
+              title: "{{set_info.q4}}",
+              choicesOrder: "random",
+              choices: ["{{set_info.op_4a}}", "{{set_info.op_4b}}", "{{set_info.op_4c}}"],
+              correctAnswer: "{{ set_info.q4_ans }}"
+          }
+      ]
+  }, {
+      
+      questions: [
+          {
+              type: "radiogroup",
+              name: "question5",
+              title: "{{set_info.q5}}",
+              choicesOrder: "random",
+              choices: ["{{set_info.op_5a}}", "{{set_info.op_5b}}", "{{set_info.op_5c}}"],
+              correctAnswer: "{{ set_info.q5_ans }}"
+          }
+      ]
+  }
+],
+completedHtml: "<h4>You have answered correctly <b>{correctedAnswers}</b> questions from <b>{questionCount}</b>.</h4>"
+};
+
+window.survey = new Survey.Model(json);
+
+survey
+.onComplete
+.add(function (result) {
+  document
+      .querySelector('#surveyResult')
+      .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 5);
+});
+
+$("#surveyElement").Survey({model: survey});
+   
+</script>
+{% endblock %}
